@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить стадион</title>
+</head>
+<body>
+    <h1>Добавить стадион</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="text" name="caption"
+               placeholder="Название" required>
+
+        <input type="text" name="location" placeholder="Адрес" required>
+
+        <select name="category" >
+            {% for category in categories %}
+                <option value="{{ category.id }}">
+                    
+                    {{ category.title }}
+
+                </option>
+            {% endfor %}
+        </select>
+
+        <input type="number" name="price" placeholder="Price" required>
+
+
+
+        <button type="submit">Создать</button>
+    </form>
+</body>
+</html>
